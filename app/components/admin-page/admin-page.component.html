@@ -1,0 +1,140 @@
+<nav
+  id="top"
+  mat-tab-nav-bar
+  animationDuration="0ms"
+  mat-align-tabs="center"
+  *ngIf="isLoggedIn"
+>
+  <a mat-tab-link routerLink="/" [active]="editProducts">Edit Products</a>
+  <a mat-tab-link (click)="openAddNewProductDialog()" [active]="addNewProduct"
+    >Add New Product</a
+  >
+
+  <!-- search input -->
+  <mat-form-field>
+    <mat-label>Search Product</mat-label>
+    <input
+      matInput
+      type="search"
+      [(ngModel)]="searchInputValue"
+      (keyup)="onItemSearch()"
+    />
+  </mat-form-field>
+  <a mat-tab-link disabled>
+    <div class="userWelcome">Welcome</div>
+    <div class="userWelcomeFullName">{{ fullName }}</div>
+  </a>
+  <a mat-tab-link routerLink="/login" (click)="logout()">Logout</a>
+</nav>
+
+<!-- Side Nav -->
+<mat-drawer-container [hasBackdrop]="true">
+  <mat-drawer #drawer mode="side">
+    <!-- Edit Product Card -->
+    <div *ngIf="editProductInformation" class="mainEditSliderDiv">
+      <mat-card>
+        <mat-icon (click)="fileInput.click()" class="editImageSideBar"
+          >create
+          <input
+            #fileInput
+            type="file"
+            hidden
+            accept=".jpg"
+            name="image"
+            (change)="fileProgress($event)"
+          />
+        </mat-icon>
+        <!-- Image -->
+        <img
+          *ngIf="!previewUrl"
+          class="editImageSlider"
+          mat-card-image
+          src="../../../assets/images/products/{{
+            editProductInformation.imageName
+          }}"
+        />
+        <div *ngIf="previewUrl">
+          <img [src]="previewUrl" width="150px" />
+        </div>
+        <hr class="sliderHr" />
+        <mat-card-content>
+          <mat-form-field class="productNameEditSlider">
+            <mat-label>Product Name</mat-label>
+            <textarea
+              [(ngModel)]="editProductInformation.itemName"
+              matInput
+              #productName
+              maxlength="50"
+            ></textarea>
+            <mat-hint align="start"
+              ><strong>Shouldn't Be A Long Name</strong>
+            </mat-hint>
+            <mat-hint align="end">{{ productName.value.length }} / 50</mat-hint>
+          </mat-form-field>
+          <hr class="sliderHr" />
+
+          <!-- Price -->
+          <mat-form-field class="productPriceEditNumber">
+            <mat-label>Product Price</mat-label>
+            <input
+              [(ngModel)]="editProductInformation.price"
+              type="number"
+              matInput
+              class="editPriceSlider"
+            />
+            <mat-icon matSuffix>&#8362;</mat-icon>
+          </mat-form-field>
+          <div></div>
+          <button
+            mat-flat-button
+            color="primary"
+            matTooltip="Save All Changes"
+            (click)="saveEditedProduct(editProductInformation)"
+          >
+            Save
+          </button>
+        </mat-card-content></mat-card
+      >
+    </div>
+  </mat-drawer>
+  <mat-drawer-content>
+    <!-- Main Card Div -->
+    <div class="mainShoppingDiv">
+      <div *ngFor="let item of itemsToView" class="card">
+        <mat-card>
+          <mat-icon
+            matTooltip="Edit Product"
+            (click)="editProduct(item)"
+            (click)="drawer.toggle()"
+            class="editProductButton"
+            >create</mat-icon
+          >
+          <!-- Image -->
+          <img
+            class="productImage"
+            mat-card-image
+            src="../../../assets/images/products/{{ item.imageName }}" />
+          <hr class="imgHr" />
+          <mat-card-content class="productName">
+            <div class="name">
+              {{ item.itemName }}
+            </div>
+
+            <!-- Price -->
+            <div class="productPrice">
+              {{ item.price }} &#8362;
+              <hr class="priceHr" />
+            </div> </mat-card-content
+        ></mat-card>
+      </div>
+    </div>
+    <button
+      (click)="scrollUp()"
+      mat-mini-fab
+      color="primary"
+      class="jumpingUpAnimation"
+    >
+      <mat-icon> keyboard_arrow_up </mat-icon>
+    </button>
+  </mat-drawer-content>
+</mat-drawer-container>

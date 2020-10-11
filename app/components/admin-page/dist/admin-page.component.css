@@ -1,0 +1,10 @@
+.userWelcome {
+  margin-right: 10px;
+  margin-left: 10px;
+  color: black;
+  font-weight: bold;
+}
+
+.userWelcomeFullName {
+  color: black;
+}

@@ -1,0 +1,8 @@
+{
+  "mongodb": {
+    "connStr": "mongodb://localhost:27017/ShoppingPalace"
+  },
+  "jwt": {
+    "secretKey": "iHaveSecret"
+  }
+}

@@ -1,0 +1,20 @@
+.userWelcome {
+  margin-right: 10px;
+  margin-left: 10px;
+  color: black;
+  font-weight: bold;
+}
+
+.userWelcomeFullName {
+  color: black;
+}
+
+.imageRollerDiv {
+  margin-top: 50px;
+  text-align: center;
+}
+.imageRollerDiv .imageRoller {
+  border: 1px solid black;
+  border-radius: 10px;
+  max-width: 50%;
+}

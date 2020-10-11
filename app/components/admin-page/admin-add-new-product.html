@@ -1,0 +1,76 @@
+<div class="mainEditSliderDiv">
+  <mat-card>
+    <mat-icon
+      (click)="fileInput.click()"
+      class="dialogImage"
+      matTooltip="Upload Product image "
+      >add_a_photo
+      <input
+        #fileInput
+        type="file"
+        hidden
+        accept=".jpg"
+        name="image"
+        (change)="fileProgress($event)"
+      />
+    </mat-icon>
+    <!-- Image -->
+  
+    <div class="image-preview mb-3" *ngIf="previewUrl">
+      <img [src]="previewUrl" height="300" />
+    </div>
+    <div class="mb-3" *ngIf="uploadedFilePath">{{uploadedFilePath}}</div>
+    <hr class="sliderHr" />
+    <mat-card-content>
+      <mat-form-field class="productNameEditSlider">
+        <mat-label>Product Name</mat-label>
+        <textarea
+          [(ngModel)]="newProduct.itemName"
+          matInput
+          #productName
+          maxlength="50"
+        ></textarea>
+        <mat-hint align="start"
+          ><strong>Shouldn't Be A Long Name</strong>
+        </mat-hint>
+        <mat-hint align="end">{{ productName.value.length }} / 50</mat-hint>
+      </mat-form-field>
+      <hr class="sliderHr" />
+
+      <!-- Categories -->
+      <mat-form-field appearance="legacy">
+        <mat-label>Category</mat-label>
+        <mat-select name="food" [(ngModel)]="newProduct.categoryId">
+          <mat-option
+            *ngFor="let category of categories"
+            [value]="category._id"
+          >
+            {{category.category}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <hr class="sliderHr" />
+
+      <!-- Price -->
+      <mat-form-field class="productPriceEditNumber">
+        <mat-label>Product Price</mat-label>
+        <input
+          [(ngModel)]="newProduct.price"
+          type="number"
+          matInput
+          class="editPriceSlider"
+        />
+        <mat-icon matSuffix>&#8362;</mat-icon>
+      </mat-form-field>
+      <div></div>
+      <button
+        mat-flat-button
+        color="primary"
+        matTooltip="Add New product"
+        (click)="saveEditedProduct(newProduct)"
+      >
+        Add
+      </button>
+    </mat-card-content></mat-card
+  >
+</div>

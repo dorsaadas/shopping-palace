@@ -1,0 +1,159 @@
+.userWelcome {
+  margin-right: 10px;
+  margin-left: 10px;
+  color: black;
+  font-weight: bold;
+}
+
+.userWelcomeFullName {
+  color: black;
+}
+
+.mainShoppingDiv {
+  display: inline-block;
+  margin: 0 40px;
+}
+
+.mainShoppingDiv .editProductButton {
+  display: none;
+}
+
+.mainShoppingDiv .card:hover .editProductButton {
+  display: block;
+  z-index: 1;
+  position: absolute;
+  right: 24px;
+  top: 15px;
+  cursor: pointer;
+}
+
+.mainShoppingDiv .card {
+  text-align: center;
+  width: 280px;
+  margin: 10px;
+  display: inherit;
+}
+
+.mainShoppingDiv .card .imgHr {
+  width: 240px;
+  border: 1px solid #ededee;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.mainShoppingDiv .card .productImage {
+  width: 250px;
+  height: 220px;
+}
+
+.mainShoppingDiv .card .productName {
+  font-family: inherit;
+  font-weight: bold;
+  font-size: 16px;
+  margin-bottom: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 50px;
+  width: 250px;
+}
+
+.mainShoppingDiv .card .productName .name {
+  margin: 0 auto;
+}
+
+.mainShoppingDiv .card .productPrice {
+  font-family: sans-serif;
+  font-weight: 600;
+  color: #31636e;
+  width: 60px;
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  font-size: 15px;
+}
+
+.mainShoppingDiv .card .priceHr {
+  width: 50px;
+  display: table-cell;
+  border: 1px solid #ededee;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.jumpingUpAnimation {
+  position: fixed;
+  bottom: 15px;
+  right: 25px;
+}
+
+.jumpingUpAnimation:hover {
+  -webkit-animation-name: jumpingUp;
+          animation-name: jumpingUp;
+  -webkit-animation-duration: 0.5s;
+          animation-duration: 0.5s;
+  -webkit-animation-iteration-count: 10;
+          animation-iteration-count: 10;
+}
+
+@-webkit-keyframes jumpingUp {
+  from {
+    bottom: 15px;
+  }
+  to {
+    bottom: 20px;
+  }
+}
+
+@keyframes jumpingUp {
+  from {
+    bottom: 15px;
+  }
+  to {
+    bottom: 20px;
+  }
+}
+
+.mainEditSliderDiv {
+  text-align: center;
+}
+
+.mainEditSliderDiv .editImageSideBar {
+  position: absolute;
+  right: 21px;
+  cursor: pointer;
+}
+
+.mainEditSliderDiv .editImageSlider {
+  width: 250px;
+  margin: 15px 5px;
+}
+
+.mainEditSliderDiv .sliderHr {
+  width: 250px;
+  opacity: 50%;
+}
+
+.mainEditSliderDiv .productNameEditSlider {
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
+.mainEditSliderDiv .productPriceEditNumber {
+  text-align: center;
+}
+
+.mainEditSliderDiv textarea {
+  resize: none;
+}
+
+.dialogImage {
+  text-align: center;
+  cursor: pointer;
+}
+
+.updatedImagePreviewResize {
+  width: 180px;
+}
+/*# sourceMappingURL=admin-page.component.css.map */
